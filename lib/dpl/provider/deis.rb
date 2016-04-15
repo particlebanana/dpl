@@ -79,7 +79,7 @@ module DPL
 
       def push_app
         context.shell "echo sed 's|remote: \\[1G||'"
-        unless context.shell "git push #{verbose_flag} deis HEAD:refs/heads/master -f 2>&1 | tr -cd '[:print:]\n' | sed 's|remote: \\[1G||' | sed 's|\\[K|\\n|' | sed 's|\\[1G|\\t|'"
+        unless context.shell "git push #{verbose_flag} deis HEAD:refs/heads/master -f 2>&1 | tr -cd '[:print:]\n' | sed -e 's|remote: \\[1G||' -e 's|\\[K||' -e 's|\\[1G|\\t|'"
           error 'Deploying application failed.'
         end
       end
