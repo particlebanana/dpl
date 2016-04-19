@@ -78,7 +78,7 @@ module DPL
       end
 
       def push_app
-        unless context.shell "git push #{verbose_flag} deis HEAD:refs/heads/master -f 2>&1 | tr -dc '[:alnum:][:space:][:punct:]'"
+        unless context.shell "git push #{verbose_flag} deis HEAD:refs/heads/master -f 2>&1 | tr -dc '[:alnum:][:space:][:punct:]' | sed -E 's/remote: (\\[1G)+//' | sed 's/\\[K$//'"
           error 'Deploying application failed.'
         end
       end
