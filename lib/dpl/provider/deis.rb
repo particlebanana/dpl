@@ -6,7 +6,7 @@ module DPL
 
       def install_deploy_dependencies
         install_url = determine_install_url
-        context.shell "curl -sSL #{install_url} | bash -x #{option(:cli_version)}"
+        context.shell "curl -sSL #{install_url} | sh -s #{option(:cli_version)}"
       end
 
       #Default to installing the default v1 client. Otherwise determine if this is a v2 client
