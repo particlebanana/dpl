@@ -96,7 +96,7 @@ module DPL
       end
 
       def push_app
-        unless context.shell "bash; git push #{verbose_flag} deis HEAD:refs/heads/master -f 2>&1 | tr -dc '[:alnum:][:space:][:punct:]' | sed -E 's/remote: (\\[1G)+//' | sed 's/\\[K$//'; exit ${PIPESTATUS[0]}"
+        unless context.shell "bash; git push #{verbose_flag} deis HEAD:refs/heads/master -f 2>&1 | tr -dc '[:alnum:][:space:][:punct:]' | sed -E 's/remote: (\\[1G)+//' | sed 's/\\[K$//'; exit ${PIPESTATUS[0]}; exit $?"
           error 'Deploying application failed.'
         end
       end
