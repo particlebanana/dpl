@@ -1,7 +1,7 @@
 module DPL
   class Provider
     class Deis < Provider
-      
+
       requires 'git'
 
       def install_deploy_dependencies
@@ -63,7 +63,7 @@ module DPL
           error 'Adding git remote failed.'
         end
 
-        wait_for_git_access
+        #wait_for_git_access
       end
 
       def wait_for_git_access()
